@@ -2,7 +2,7 @@ from itertools import cycle
 from numpy.random import randint,choice
 import sys
 import neat
-import cPickle as pickle
+import pickle
 import os
 
 
@@ -17,7 +17,7 @@ PIPEGAPSIZE  = 180 # gap between upper and lower part of pipe
 BASEY        = SCREENHEIGHT * 0.79
 SCORE = 0
 
-BACKGROUND = pygame.image.load('/home/roshan/Documents/FlappyBird/background.png')
+BACKGROUND = pygame.image.load('background.png')
 
 GENERATION = 0
 MAX_FITNESS = 0
@@ -29,7 +29,7 @@ class Bird(pygame.sprite.Sprite):
 
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load('/home/roshan/Documents/FlappyBird/redbird.png')
+        self.image = pygame.image.load('redbird.png')
 
         self.x = int(SCREENWIDTH * 0.2)
         self.y = SCREENHEIGHT*0.5
@@ -92,8 +92,8 @@ class Pipe(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.screen = screen
-		self.lowerBlock = PipeBlock('/home/roshan/Documents/FlappyBird/pipe-red.png',False)
-		self.upperBlock = PipeBlock('/home/roshan/Documents/FlappyBird/pipe-red.png',True)
+		self.lowerBlock = PipeBlock('pipe-red.png',False)
+		self.upperBlock = PipeBlock('pipe-red.png',True)
 		
 
 		self.pipeWidth = self.upperBlock.rect.width
@@ -263,8 +263,9 @@ config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
                          'config')
 
-
-genomeFile = '/home/roshan/Documents/FlappyBird/bestGenomes/2_732.p'
+genomeDir = os.path.join(os.getcwd(), "bestGenomes")
+# genomeFile = '/home/roshan/Documents/FlappyBird/bestGenomes/2_732.p'
+genomeFile = os.path.join(genomeDir, "1_1572.p")
 genome = pickle.load(open(genomeFile,'rb'))
 
 fitnessScores = []
