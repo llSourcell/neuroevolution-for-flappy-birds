@@ -2,7 +2,7 @@ from itertools import cycle
 from numpy.random import randint,choice
 import sys
 import neat
-import cPickle as pickle
+import pickle
 import os
 
 
@@ -17,7 +17,7 @@ PIPEGAPSIZE  = 160 # gap between upper and lower part of pipe
 BASEY        = SCREENHEIGHT * 0.79
 SCORE = 0
 
-BACKGROUND = pygame.image.load('/home/roshan/Documents/FlappyBird/background.png')
+BACKGROUND = pygame.image.load('background.png')
 
 GENERATION = 0
 MAX_FITNESS = 0
@@ -29,7 +29,7 @@ class Bird(pygame.sprite.Sprite):
 
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load('/home/roshan/Documents/FlappyBird/redbird.png')
+        self.image = pygame.image.load('redbird.png')
 
         self.x = int(SCREENWIDTH * 0.2)
         self.y = SCREENHEIGHT*0.5
@@ -92,8 +92,8 @@ class Pipe(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.screen = screen
-		self.lowerBlock = PipeBlock('/home/roshan/Documents/FlappyBird/pipe-red.png',False)
-		self.upperBlock = PipeBlock('/home/roshan/Documents/FlappyBird/pipe-red.png',True)
+		self.lowerBlock = PipeBlock('pipe-red.png',False)
+		self.upperBlock = PipeBlock('pipe-red.png',True)
 		
 
 		self.pipeWidth = self.upperBlock.rect.width
@@ -272,8 +272,9 @@ pop.add_reporter(stats)
 winner = pop.run(eval_genomes, 30)
 
 print(winner)
+curr_dir = os.getcwd()
 
-outputDir = '/home/roshan/Documents/FlappyBird/bestGenomes'
+outputDir = os.path.join(curr_dir, "bestGenomes")
 os.chdir(outputDir)
 serialNo = len(os.listdir(outputDir))+1
 outputFile = open(str(serialNo)+'_'+str(int(MAX_FITNESS))+'.p','wb' )

@@ -14,7 +14,7 @@ PIPEGAPSIZE  = 160 # gap between upper and lower part of pipe
 BASEY        = SCREENHEIGHT * 0.79
 SCORE = 0
 
-BACKGROUND = pygame.image.load('/home/roshan/Documents/FlappyBird/background.png')
+BACKGROUND = pygame.image.load('background.png')
 
 
 class Bird(pygame.sprite.Sprite):
@@ -23,7 +23,7 @@ class Bird(pygame.sprite.Sprite):
 
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load('/home/roshan/Documents/FlappyBird/redbird.png')
+        self.image = pygame.image.load('redbird.png')
 
         self.x = int(SCREENWIDTH * 0.2)
         self.y = SCREENHEIGHT*0.5
@@ -86,8 +86,8 @@ class Pipe(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.screen = screen
-		self.lowerBlock = PipeBlock('/home/roshan/Documents/FlappyBird/pipe-red.png',False)
-		self.upperBlock = PipeBlock('/home/roshan/Documents/FlappyBird/pipe-red.png',True)
+		self.lowerBlock = PipeBlock('pipe-red.png',False)
+		self.upperBlock = PipeBlock('pipe-red.png',True)
 		
 
 		self.pipeWidth = self.upperBlock.rect.width
